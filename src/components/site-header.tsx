@@ -19,7 +19,15 @@ export function SiteHeader() {
   useEffect(() => {
     if (!user) { setIsAdmin(false); setProfile(null); return; }
     supabase.from("profiles").select("username,display_name,avatar_url").eq("id", user.id).maybeSingle().then(({ data }) => setProfile(data as any));
-    supabase.rpc("has_role", { _user_id: user.id, _role: "admin" }).then(({ data }) => setIsAdmin(!!data));
+    supabase
+  .from("user_roles")
+  .select("role")
+  .eq("user_id", user.id)
+  .eq("role", "admin")
+  .maybeSingle()
+  .then(({ data }) => {
+    setIsAdmin(!!data);
+  });
   }, [user]);
 
   return (
