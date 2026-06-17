@@ -1,0 +1,1 @@
+import{j as n}from"./index-IGdi1vmz.js";const e=()=>n.jsx("div",{className:"min-h-screen grid place-items-center p-12",children:n.jsx("p",{children:"Category not found"})});export{e as notFoundComponent};

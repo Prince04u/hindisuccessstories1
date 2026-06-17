@@ -1,0 +1,1 @@
+import{j as r}from"./index-IGdi1vmz.js";const o=()=>r.jsx("div",{className:"min-h-screen grid place-items-center p-12",children:r.jsx("p",{children:"Failed to load author"})});export{o as errorComponent};
