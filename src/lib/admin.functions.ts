@@ -3,7 +3,6 @@ import { z } from "zod";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
 async function ensureAdmin(supabase: any, userId: string) {
-  const { data } = await supabase.rpc("async function ensureAdmin(supabase: any, userId: string) {
   const { data } = await supabase
     .from("user_roles")
     .select("role")
@@ -12,10 +11,7 @@ async function ensureAdmin(supabase: any, userId: string) {
     .maybeSingle();
 
   if (!data) throw new Error("Forbidden");
-}", { _user_id: userId, _role: "admin" });
-  if (!data) throw new Error("Forbidden");
 }
-
 export const adminDashboard = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }) => {
